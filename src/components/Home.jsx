@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 const Home = () => {
+    console.log(process.env.REACT_APP_API_URL)
     return (
         <div className="landing-container">
             <div className="box">
