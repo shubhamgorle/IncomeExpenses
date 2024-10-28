@@ -6,7 +6,7 @@ export const createNewData = (formData) => async (dispatch, getState) => {
             headers: { "Content-Type": "application/json" }
         }
         dispatch({ type: R_NEW_DATA_REQUEST })
-        let { data } = await axios.post('https://ashirwad-land-developers.onrender.com/ashirwad/raulgaon/new', formData, config);
+        let { data } = await axios.post(`${process.env.REACT_APP_API_URL}/ashirwad/raulgaon/new`, formData, config);
         dispatch({
             type: R_NEW_DATA_SUCCESS,
             payload: data
@@ -23,7 +23,7 @@ export const getAllData = () => async (dispatch, getState) => {
     try {
        
         dispatch({ type: R_GET_DATA_REQUEST })
-        let { data } = await axios.get('https://ashirwad-land-developers.onrender.com/ashirwad/raulgaon/get');
+        let { data } = await axios.get(`${process.env.REACT_APP_API_URL}/ashirwad/raulgaon/get`);
         dispatch({
             type: R_GET_DATA_SUCCESS,
             payload: data.data
@@ -39,7 +39,7 @@ export const getAllData = () => async (dispatch, getState) => {
 export const deleteData = (id) => async (dispatch, getState) => {
     try {
         dispatch({ type: R_DELETE_DATA_REQUEST })
-        let { data } = await axios.delete(`https://ashirwad-land-developers.onrender.com/ashirwad/raulgaon/remove/${id}`);
+        let { data } = await axios.delete(`${process.env.REACT_APP_API_URL}/ashirwad/raulgaon/remove/${id}`);
         dispatch({
             type: R_DELETE_DATA_SUCCESS,
             payload: data.success
@@ -58,7 +58,7 @@ export const UpdateData = (id, updatedData) => async (dispatch) => {
     }
     try {
         dispatch({ type: R_UPDATE_DATA_REQUEST })
-        let { data } = await axios.put(`https://ashirwad-land-developers.onrender.com/ashirwad/raulgaon/update/${id}`, updatedData, config);
+        let { data } = await axios.put(`${process.env.REACT_APP_API_URL}/ashirwad/raulgaon/update/${id}`, updatedData, config);
         dispatch({
             type: R_UPDATE_DATA_SUCCESS,
             payload: data.success
@@ -73,7 +73,7 @@ export const UpdateData = (id, updatedData) => async (dispatch) => {
 export const getDetails = (id) => async (dispatch) => {
     try {
         dispatch({ type: R_DETAILS_DATA_REQUEST })
-        let { data } = await axios.get(`https://ashirwad-land-developers.onrender.com/ashirwad/raulgaon/details/${id}`);
+        let { data } = await axios.get(`${process.env.REACT_APP_API_URL}/ashirwad/raulgaon/details/${id}`);
        
         dispatch({
             type: R_DETAILS_DATA_SUCCESS,
