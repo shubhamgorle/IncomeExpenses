@@ -6,7 +6,7 @@ export const createNewData = (formData) => async (dispatch, getState) => {
             headers: { "Content-Type": "application/json" }
         }
         dispatch({ type: NEW_DATA_REQUEST })
-        let { data } = await axios.post(`${process.env.REACT_APP_API_URL}/ashirwad/mendhepathar/new`, formData, config);
+        let { data } = await axios.post(`/ashirwad/mendhepathar/new`, formData, config);
         dispatch({
             type: NEW_DATA_SUCCESS,
             payload: data
@@ -23,7 +23,7 @@ export const getAllData = () => async (dispatch, getState) => {
     try {
        
         dispatch({ type: GET_DATA_REQUEST })
-        let { data } = await axios.get(`${process.env.REACT_APP_API_URL}/ashirwad/mendhepathar/get`);
+        let { data } = await axios.get(`/ashirwad/mendhepathar/get`);
         dispatch({
             type: GET_DATA_SUCCESS,
             payload: data.data
@@ -39,7 +39,7 @@ export const getAllData = () => async (dispatch, getState) => {
 export const deleteData = (id) => async (dispatch, getState) => {
     try {
         dispatch({ type: DELETE_DATA_REQUEST })
-        let { data } = await axios.delete(`${process.env.REACT_APP_API_URL}/ashirwad/mendhepathar/remove/${id}`);
+        let { data } = await axios.delete(`/ashirwad/mendhepathar/remove/${id}`);
         dispatch({
             type: DELETE_DATA_SUCCESS,
             payload: data.success
@@ -58,7 +58,7 @@ export const UpdateData = (id, updatedData) => async (dispatch) => {
     }
     try {
         dispatch({ type: UPDATE_DATA_REQUEST })
-        let { data } = await axios.put(`${process.env.REACT_APP_API_URL}/ashirwad/mendhepathar/update/${id}`, updatedData, config);
+        let { data } = await axios.put(`/ashirwad/mendhepathar/update/${id}`, updatedData, config);
         dispatch({
             type: UPDATE_DATA_SUCCESS,
             payload: data.success
@@ -73,7 +73,7 @@ export const UpdateData = (id, updatedData) => async (dispatch) => {
 export const getDetails = (id) => async (dispatch) => {
     try {
         dispatch({ type: DETAILS_DATA_REQUEST })
-        let { data } = await axios.get(`${process.env.REACT_APP_API_URL}/ashirwad/mendhepathar/details/${id}`);
+        let { data } = await axios.get(`/ashirwad/mendhepathar/details/${id}`);
        
         dispatch({
             type: DETAILS_DATA_SUCCESS,
